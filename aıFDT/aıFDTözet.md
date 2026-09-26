@@ -1,3 +1,8 @@
+---
+#DİKKAT, PYTHON GEREKTİRİR VE WİNDOWS İÇİNDİR
+---
+#DİKKAT, `g4finstaller.cmd` ÇALIŞTIRILMALIDIR
+---
 # aıFDT — Proje Özeti
 
 aıFDT, Windows üzerinde çalışan, konsol tabanlı yerel bir yapay zeka sohbet uygulamasıdır. Kullanıcı önce kısa ömürlü bir erişim kodu alır, sonra bu kodla sohbete girer. Cevaplar ücretsiz `g4f` kütüphanesi üzerinden üretilir; konuşma geçmişi JSON dosyasında tutulur.
@@ -6,8 +11,8 @@ aıFDT, Windows üzerinde çalışan, konsol tabanlı yerel bir yapay zeka sohbe
 
 İki ayrı programdan oluşur:
 
-1. **API yöneticisi** (`apiyonetici.py`) — sohbete girmek için gereken yerel erişim kodunu üretir ve saklar.
-2. **Sohbet programı** (`aiFDTdisetkilesim.py`) — kodu doğrular, ardından kullanıcıyla konuşur ve geçmişi hatırlar.
+1. **API yöneticisi** (`apiyonetici.py`) — sohbete girmek için gereken yerel erişim kodunu üretir ve saklar(apiyonetici.exe yi kullanın.).
+2. **Sohbet programı** (`aiFDTdisetkilesim.py`) — kodu doğrular, ardından kullanıcıyla konuşur ve geçmişi hatırlar(aiFDTdisetkilesim.exe i kullanın).
 
 Her iki program da PyInstaller ile konsol `.exe` olarak paketlenmek üzere hazırlanmıştır (`apiyonetici.spec`, `aiFDTdisetkilesim.spec`).
 ---
@@ -47,10 +52,10 @@ Doğrulama yalnızca `etkin` listedeki kodlar için başarılı olur.
 | `api.json` | API deposu |
 | `aiFDTbellek.json` | Bellek dosyası (şu an `kullanici_bilgileri.ad` alanı var) |
 | `apiyonetici.spec` | API yöneticisinin PyInstaller tanımı |
-| `aiFDTdisetkilesim.spec` | Sohbet programının PyInstaller tanımı (`g4f` gizli import) 
+| `aiFDTdisetkilesim.spec` | Sohbet programının PyInstaller tanımı (`g4f` gizli import) |
 ---
 ## Dikkat edilmesi gereken noktalar
 
-- Sohbet programı `api_yonetici` modülünü import eder; dosya adı ise `apiyonetici.py`. Bu iki isim Python’da eşleşmez, bu yüzden program “dosya aynı klasörde olmalı” hatasıyla kapanabilir.
-- Kod `ai_fdt_bellek.json` okur/yazar. Klasördeki bellek dosyasının adı `aiFDTbellek.json` ve içeriği konuşma geçmişi değil, kullanıcı adı kaydıdır. Sohbet bu dosyayı kullanmaz; kendi dosyasını ayrıca oluşturur.
-- Erişim kodları yerel ve kısa ömürlüdür. Üçüncü taraf bir API anahtarı değildir; asıl model çağrısı `g4f` üzerinden yapılır.
+* Sohbet programı `api_yonetici` modülünü import eder; dosya adı ise `apiyonetici.py`. Bu iki isim Python’da eşleşmez, bu yüzden program “dosya aynı klasörde olmalı” hatasıyla kapanabilir.
+* Kod `ai_fdt_bellek.json` okur/yazar. Klasördeki bellek dosyasının adı `aiFDTbellek.json` ve içeriği konuşma geçmişi değil, kullanıcı adı kaydıdır. Sohbet bu dosyayı kullanmaz; kendi dosyasını ayrıca oluşturur.
+* Erişim kodları yerel ve kısa ömürlüdür. Üçüncü taraf bir API anahtarı değildir; asıl model çağrısı `g4f` üzerinden yapılır.
